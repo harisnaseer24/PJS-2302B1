@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+
+</head>
+<body>
+    
+
+
+
+    <div class="container">
+        <div class="row" id="user">
+           
+        </div>
+    </div>
+    <!-- <button id="btn">hi</button> -->
+
+
+    <script> 
+
+
+// async function greet(){
+
+//     await //facebook se data request kia
+//     console.log("hi2")//data 
+
+//     console.log("hi4")
+
+
+// }
+
+
+// greet();
+// console.log("hi3")
+// console.log("hi3")
+// console.log("hi3")
+// console.log("hi3")
+// console.log("hi3")
+// console.log("hi3")
+// console.log("hi3")
+
+    // IIFE IMMEDIATELY  INVOKED FUNCTION EXPRESSION
+
+   
+(async function(){
+    
+//     let sayHi = ()=>{
+//     alert("hi")
+// }
+// let button=document.getElementById("btn")
+// button.addEventListener('click',sayHi);
+// let a=12;
+
+let userlist=document.getElementById("user")
+    
+let products=await fetch('https://dummyjson.com/users').then(resp=>resp.json()).then(data=>{
+console.log(data.users)
+data.users.forEach(user => {
+    userlist.innerHTML+=`
+
+<div class="col-lg-3" >
+                <div class="card text-center">
+                    <img src="${user.image}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">NAME: ${user.firstName} ${user.lastName}</h5>
+                      <h5 class="card-text">UNIVERSITY: ${user.university}</h5>
+                      <h5 class="card-text">DOB: ${user.birthDate}</h5>
+                      <a href="#" class="btn btn-danger">${user.email}</a>
+                    </div>
+                  </div>
+            </div>`
+});
+})
+})()
+
+
+
+//stop till the answer arrives
+// console.log(products)
+
+
+
+
+
+
+
+// console.log("2")
+
+
+
+    </script>
+</body>
+</html>

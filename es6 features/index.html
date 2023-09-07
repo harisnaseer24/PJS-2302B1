@@ -27,13 +27,13 @@
        
 // rest/spread ...
 
-let a=[1,2,3,4],
-c=[7,8,9]
+// let a=[1,2,3,4],
+// c=[7,8,9]
 
 //spread: array k tamam elements ko phailana
 
-let b=[...a,5,6,...c]
-console.log(b)
+// let b=[...a,5,6,...c]
+// console.log(b)
 
 //rest: 
 // function add(a,b,...c){
@@ -65,9 +65,11 @@ console.log(b)
 //     console.log("this is addition.")
 // }
 
-// let add=(a,b)=>{
-//     console.log(`this is addition :   ${a+b}`)
-// }
+let add=a=>console.log(a+2)
+add(2)
+// let add=(a,b)=>console.log(`this is addition :   ${a+b}`)
+//     
+// 
 // add(1,2);
  
 // let greet=name=>console.log(`Welcome :   ${name}`)
@@ -76,15 +78,15 @@ console.log(b)
 
 //De-structuring
 
-let h=[1,2,3,4]
+// let h=[1,2,3,4]
 
 // let num0=h[0];
 // let num1=h[1];
 // let num2=h[2];
 // let num3=h[3];
 // console.log(num2)
-let [num1,...numrem]=h
-console.log(numrem);
+// let [num1,...numrem]=h
+// console.log(numrem);
 
 
 
