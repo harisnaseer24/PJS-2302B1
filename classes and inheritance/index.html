@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Classes In JavaScript</h1>
+
+    
+<script>
+// classes : template for creating objects
+
+// let person={
+//     name:"Waleed",
+//     age:"19",
+//     edu:"inter",
+
+// }
+
+
+class Person{
+constructor(name,age,edu,fathername){
+this.name=name,
+this.age=age,
+this.edu=edu,
+this.fathername=fathername
+}
+ 
+speak(){
+    console.log(`Hi my name is ${this.name} son of ${this.fathername} having age of ${this.age}. My qualification is ${this.edu}`)
+}
+}
+ let adnan= new Person("Adnan",25,"inter","Arshad")
+ let waleed= new Person("Waleed",18,"inter","Waseem")
+ let bilal= new Person("Bilal",21,"inter","Akbar")
+
+ adnan.speak();
+ waleed.speak();
+ bilal.speak();
+
+//Object Oriented Programming OOP
+/*PILLARS OF OOP
+1.Inheritance.
+
+2.Polymorphism.
+5+5=10; addition
+"HI"+5="HI5" ; concatination
+3.Abstraction.
+//user ko uske kam k methods dikhana
+
+4.Encapsulation.
+
+*/
+//inheritance 
+
+
+
+
+ class Students extends Person{
+    constructor(name="Nahi bataya",age="not confirmed",edu="Nahi Pta",fathername="Nahi bataya",batch="not confirm",timings="pta nahi"){
+      super(name,age,edu,fathername),
+      this.timings=timings,
+      this.batch=batch  
+    }
+    aptechDetails(){
+        console.log(`I study in ${this.batch} in ${this.timings} shift at Aptech.`)
+    }
+
+ }
+ let rayan=new Students("Rayan", 18,"first year","Kashif","2302B1","9-11 TTS");
+
+rayan.speak();
+rayan.aptechDetails();
+// adnan.aptechDetails();//not possible
+
+let person2= new Students();
+person2.speak();
+person2.aptechDetails();
+
+
+</script>
+</body>
+</html>

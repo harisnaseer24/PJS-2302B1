@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+<style>
+    /* input + label{
+        color: rgb(90, 90, 255);
+    }
+    input.valid + label{
+        color: rgb(7, 88, 0);
+    }
+    input.invalid + label{
+        color: rgb(255, 0, 0);
+    } */
+    input.valid{
+        border-color: rgb(7, 88, 0);
+    }
+    input.invalid{
+        border-color: rgb(255, 0, 0);
+    }
+</style>
+</head>
+<body>
+    <div class="container">
+        <div class="row ">
+            <div class="col-8 mx-auto">
+        <h1 class="text-center display-">Signup Form</h1>
+       
+        <input type="text" name="username" id="username" class="form-control" placeholder="Enter username" ><br> <label for="username" class="mb-3">Enter username from 5-10 alphanumeric characters</label><br>
+        
+
+<input type="text" name="email" id="email" class="form-control" placeholder="Enter email" ><br><label for="email" class="mb-3">Enter email like xyz@abc.com</label><br>
+
+
+<input type="text" name="password" id="password" class="form-control" placeholder="Enter password"><br>
+<label for="password" class="mb-3">A password must contains a lowercase letter, an uppercase letter, a digit and an special charater</label><br>
+<button class="btn btn-info  d-block mx-auto my-2" onclick="register();">Register</button>
+    </div>
+</div>
+</div>
+   
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script> 
+    let users=JSON.parse(localStorage.getItem("users"))||[];
+
+let username=document.getElementById("username");
+let pass=document.getElementById("password");
+let email=document.getElementById("email");
+
+const regex={
+username:/^[a-zA-Z]{5,}$/g,
+email: /^([a-z\d-]+)@([a-z]+)\.([a-z]{2,6})(\.[a-z]{3,4})?(\.[a-z]{2})?$/g,
+password:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/g
+
+}
+
+function register(){
+
+    if(username.value==""){
+       username.classList.add("invalid")
+       username.classList.remove("valid")
+    }
+    // console.log(regex.username.test(username.value))
+     else if(regex.username.test(username.value)){
+        username.classList.add("valid")
+        username.classList.remove("invalid")
+    }
+    if(email.value==""){
+        email.classList.add("invalid")
+       email.classList.remove("valid")
+    }
+    // console.log(regex.username.test(username.value))
+     else if(regex.email.test(email.value)){
+        email.classList.add("valid")
+        email.classList.remove("invalid")
+    }
+    if(pass.value==""){
+        password.classList.add("invalid")
+        password.classList.remove("valid")
+    }
+    // console.log(regex.username.test(username.value))
+     else if(regex.password.test(pass.value)){
+        password.classList.add("valid")
+        password.classList.remove("invalid")
+    }
+
+    else if(regex.password.test(pass.value)==true && regex.email.test(email.value)==true && regex.username.test(username.value)==true){
+        
+const person={
+    username:username.value,
+    email:email.value,
+    pass:password.value
+} 
+users.push(person)
+localStorage.setItem("users",JSON.stringify(users))
+      Swal.fire({
+  icon: 'success',
+  title: 'Successful',
+  text: 'thanks for registration',
+  footer: '<a href="">Login now..1</a>'
+})
+}}
+    </script>
+</body>
+</html>

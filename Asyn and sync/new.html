@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+<body>
+    <div class="container">
+        <div class="row" id="items">
+
+        </div>
+    </div>
+</body>
+<script>
+    // iife
+    (async function(){
+let items=document.getElementById("items");
+
+let productdata= await fetch("https://dummyjson.com/products").then(resp=>resp.json()).then(data=>{
+    console.log(data.products)
+    data.products.forEach(product => {
+    
+items.innerHTML+=`
+<div class="col-lg-3 col-md-6 col-sm-12 my-2" >
+    <div class="card text-center" style="height: 600px">
+        <img src="${product.images[0]}" class="card-img-top img-fluid" alt="..." hegiht="450">
+        <div class="card-body">
+          <h5 class="card-title">${product.brand} ${product.title}</h5>
+          <p class="card-text">${product.description}</p>
+          <h5 class="card-text">Rating: ${product.rating}</h5>
+          <a href="#" class="btn btn-danger">$${product.price}</a>
+        </div>
+      </div>
+</div>
+`
+
+
+});
+
+})
+
+
+    })()
+</script>
+</html>
